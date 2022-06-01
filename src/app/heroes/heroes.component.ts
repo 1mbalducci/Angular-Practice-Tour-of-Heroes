@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Hero } from '../hero';
 // import { HEROES } from '../mock-heroes //HeroService imports mock-heroes file using the get heros function which is defined in the Hero.service.ts file
 import {HeroService} from '../hero.service';
+import { MessageService } from '../message.service';
 
 @Component({
   selector: 'app-heroes',
@@ -12,9 +13,10 @@ export class HeroesComponent implements OnInit {
   selectedHero?: Hero;
   onSelect(hero: Hero): void {
     this.selectedHero = hero;
+    this.messageService.add(`HeroesComponent: Selected hero id=${hero.id}`);
   }
   heroes: Hero[]=[];
-  constructor(private heroservice: HeroService ) { }
+  constructor(private heroService: HeroService, private messageService: MessageService ) { }
 
   //used in the mock-heroes display version-also would be used with json file in front end
   // getHeroes(): void {
