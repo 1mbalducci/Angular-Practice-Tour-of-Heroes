@@ -16,8 +16,14 @@ export class HeroesComponent implements OnInit {
   heroes: Hero[]=[];
   constructor(private heroservice: HeroService ) { }
 
+  //used in the mock-heroes display version-also would be used with json file in front end
+  // getHeroes(): void {
+  //   this.heroes = this.heroservice.getHeroes();
+  // }
+
   getHeroes(): void {
-    this.heroes = this.heroservice.getHeroes();
+    this.heroService.getHeroes()
+        .subscribe(heroes => this.heroes = heroes);
   }
 
   ngOnInit(): void {
